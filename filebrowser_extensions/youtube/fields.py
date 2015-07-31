@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import ugettext as _now
 from embed_video.backends import YoutubeBackend, UnknownIdException
 from embed_video.fields import EmbedVideoFormField
 
@@ -23,6 +24,6 @@ class YoutubeEmbedFormField(EmbedVideoFormField):
             backend = YoutubeBackend(url)
             backend.get_code()
         except UnknownIdException:
-            raise forms.ValidationError(_(u'ID of this video could not be '
-                                          u'recognized.'))
+            raise forms.ValidationError(_now(u'ID of this video could not be '
+                                             u'recognized.'))
         return url

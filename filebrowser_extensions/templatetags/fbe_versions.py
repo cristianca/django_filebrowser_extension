@@ -96,13 +96,13 @@ class VersionObjectNode(BaseVersionObjectNode):
             if FORCE_PLACEHOLDER or (SHOW_PLACEHOLDER and not site.storage.isfile(source)):
                 source = PLACEHOLDER
             fileobject = FileObject(source, site=site)
-        #try:
-        version = fileobject.version_generate(version_suffix)
-        context[self.var_name] = version
-        #except Exception as e:
-        #    if settings.TEMPLATE_DEBUG:
-        #        raise e
-        #    context[self.var_name] = ""
+        try:
+            version = fileobject.version_generate(version_suffix)
+            context[self.var_name] = version
+        except Exception as e:
+            if settings.TEMPLATE_DEBUG:
+                raise e
+            context[self.var_name] = ""
         return ""
 
 
@@ -118,7 +118,6 @@ def fbe_version_object(parser, token):
     if bits[3] != 'as':
         raise TemplateSyntaxError("second argument to 'version_object' tag must be 'as'")
     return VersionObjectNode(parser.compile_filter(bits[1]), parser.compile_filter(bits[2]), bits[4])
-
 
 
 register.tag(fbe_version)

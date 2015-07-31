@@ -90,4 +90,3 @@ class FileBrowseField(BaseFileBrowseField):
             'format': self.format
         }
         return super(CharField, self).formfield(**defaults)
-

@@ -46,10 +46,7 @@ class FBExtensionObject(object):
         """
         return extended object related to fb extension
         """
-
-
         model = get_model(self.app_label, self.model_name)
-
         try:
             return model.objects.get(pk=self.object_id)
         except model.DoesNotExist:

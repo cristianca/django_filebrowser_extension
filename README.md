@@ -7,6 +7,3 @@ use filebrowser not only for files but also for medias from 3'rd part services l
 * [thinglink](https://www.thinglink.com/ "thinglink")
 * More to come
 
-
-
-

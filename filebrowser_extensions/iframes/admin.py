@@ -16,5 +16,3 @@ class IFrameAdmin(FileBrowserAdmin):
             VERSIONS[ADMIN_THUMBNAIL]['width'],
             VERSIONS[ADMIN_THUMBNAIL]['height']
         )
-
-

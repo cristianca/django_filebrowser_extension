@@ -95,4 +95,3 @@ class YoutubeAdmin(IFrameAdmin):
 
 
 admin.site.register(Youtube, YoutubeAdmin)
-

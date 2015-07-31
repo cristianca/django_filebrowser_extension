@@ -8,4 +8,3 @@ class ThingLinkAdmin(IFrameAdmin):
 
 
 admin.site.register(ThingLink, ThingLinkAdmin)
-
