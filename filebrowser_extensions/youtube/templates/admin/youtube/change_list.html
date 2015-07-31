@@ -1,0 +1,106 @@
+{% extends "admin/change_list.html" %}
+{% load admin_static i18n %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    {% if youtube_results %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static "youtube/css/youtube.css" %}">
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ block.super }}
+    {% if youtube_results %}
+        <script src="{% static "youtube/js/youtube.js" %}" type="text/javascript"></script>
+    {% endif %}
+{% endblock %}
+
+{% block object-tools-items %}
+    {% include "filebrowser/include_exstensions.html" %}
+    {{ block.super }}
+{% endblock %}
+
+{% block result_list %}
+    {{ block.super }}
+    {% if youtube_results %}
+        <div class="grp-module grp-changelist-results grp-youtube{% if is_popup %} grp-youtube-popup{% endif %}">
+            <table id="result_list_youtube" cellspacing="0">
+                <thead>
+                    <tr class="grp-youtube-handler">
+                        <th class="youtube-show-hide" colspan="2">
+                            <a href="javascript:;" class="youtube-hide"><i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="javascript:;" class="youtube-show"><i class="fa fa-arrow-circle-left"></i></a>
+                            <img src="{% static "youtube/images/YouTube-logo-full_color.png" %}">
+                        </th>
+                        <th class="youtube-pagination">
+                            {% if prev_page_token %}
+                                <a href="{% url "admin:youtube_changelist_token" prev_page_token %}?q={{ search_query }}{% if is_popup %}&_popup=1{% endif %}" class="youtube-prev"><i class="fa fa-arrow-circle-left"></i></a>
+                            {% endif %}
+                            {% if next_page_token %}
+                                <a href="{% url "admin:youtube_changelist_token" next_page_token %}?q={{ search_query }}{% if is_popup %}&_popup=1{% endif %}" class="youtube-next"><i class="fa fa-arrow-circle-right"></i></a>
+                            {% endif %}
+                        </th>
+                    </tr>
+                    <tr class="grp-youtube-labels">
+                        <th scope="col">
+                            <div class="grp-text"><span>Move to Library</span></div>
+                        </th>
+                        <th scope="col">
+                            <div class="grp-text"><span>Name</span></div>
+                        </th>
+                        <th scope="col">
+                            <div class="grp-text"><span>Preview</span></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for youtube_result in youtube_results %}
+                        {% with youtube_result.result as youtube %}
+                        {% with youtube_result.form as youtube_form %}
+                        <tr class="grp-row grp-row-even">
+                            <td class="field-select_item">
+                                <button class="grp-button youtube_movelink" rel="youtube_move_{{ youtube.id.videoId }}">Move to library</button>
+                            </td>
+                            <td>
+                                {{ youtube.snippet.title }}
+                            </td>
+                            <td>
+                                {% include "filebrowser/iframe.html" with link="https://youtube.com/embed/"|add:youtube.id.videoId width=240 height=180 %}
+                            </td>
+                        </tr>
+                        {% endwith %}
+                        {% endwith %}
+                    {% empty %}
+                        <tr class="grp-row grp-row-even">
+                            <td colspan="3">
+                                <span>{% trans "No videos found" %}</span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+
+{# Need to move forms from youtube widget to diffrent place #}
+{# b'coz in results list they will be inside changelist form #}
+    {% if youtube_results %}
+        {% for youtube_result in youtube_results %}
+            {% with youtube_result.result as youtube %}
+            {% with youtube_result.form as youtube_form %}
+                <form id="youtube_move_{{ youtube.id.videoId }}" action="{% url "admin:youtube_move_to_library" %}?q={{ search_query }}{% if is_popup %}&_popup=1{% endif %}" method="post">
+                    {% csrf_token %}
+                    {{ youtube_form }}
+                </form>
+            {% endwith %}
+            {% endwith %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

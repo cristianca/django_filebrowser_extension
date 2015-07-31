@@ -1,0 +1,5 @@
+<li><a href="{% url 'filebrowser:fb_browse' %}{% if query.pop %}?pop={{ query.pop }}{% endif %}">Files</a></li>
+{% if query.pop == '1' or not query.pop %}
+<li><a href="{% url 'admin:youtube_youtube_changelist' %}{% if query.pop %}?_popup={{ query.pop }}{% endif %}">Youtube</a></li>
+<li><a href="{% url 'admin:thinglink_thinglink_changelist' %}{% if query.pop %}?_popup={{ query.pop }}{% endif %}">ThingLink</a></li>
+{% endif %}

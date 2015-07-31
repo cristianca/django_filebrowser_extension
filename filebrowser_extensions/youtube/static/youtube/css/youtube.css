@@ -1,0 +1,65 @@
+.youtube_movelink{
+    width: 120px;
+}
+
+.youtube-show{
+    display: none;
+}
+
+i.fa {
+    font-size: 2em;
+    float: left;
+    margin-top: 7px;
+}
+
+.grp-youtube {
+    position:fixed;
+    top: 179px;
+    right: 20px;
+    width: 550px;
+    height: 640px;
+    overflow-y:scroll;
+    z-index: 1000;
+}
+
+.grp-youtube-popup {
+    top: 119px;
+    height: 283px;
+}
+
+.grp-youtube-handler img{
+    width: 60px;
+}
+
+.grp-youtube-hide {
+    height: 53px;
+    width: 110px;
+    overflow: hidden;
+}
+
+.youtube-prev{
+    float: left;
+    font-size: 14px;
+}
+
+.youtube-next {
+    float: right;
+    font-size: 14px;
+}
+
+#result_list_youtube thead{
+    position: fixed;
+    width: 550px;
+    z-index: 1001;
+}
+#result_list_youtube thead .grp-youtube-handler th.youtube-show-hide {
+    width: 308px;
+}
+#result_list_youtube thead .grp-youtube-handler th.youtube-pagination {
+    width: 242px;
+}
+
+#result_list_youtube tbody{
+    position: absolute;
+    top: 76px;
+}

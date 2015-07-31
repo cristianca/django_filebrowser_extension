@@ -1,0 +1,2 @@
+class FBExtensionObjectException(Exception):
+    pass
