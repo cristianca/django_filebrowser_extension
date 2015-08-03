@@ -1,0 +1,7 @@
+include AUTHORS.txt
+include README.md
+recursive-include filebrowser_extensions/static *
+recursive-include filebrowser_extensions/templates *
+recursive-include filebrowser_extensions/thinglink/templates *
+recursive-include filebrowser_extensions/youtube/static *
+recursive-include filebrowser_extensions/youtube/templates *

@@ -1,0 +1,3 @@
+The primary author of django_filebrowser_extension is Tomasz Roszko
+
+email: tomaszroszko@tjsoftware.co
