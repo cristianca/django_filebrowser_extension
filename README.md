@@ -19,14 +19,14 @@ In your settings.py
 
 ```python
 INSTALLED_APPS = (
-...
+
     'grappelli',
     'filebrowser_extensions',
     'filebrowser_extensions.thinglink',
     'filebrowser_extensions.youtube',
     'filebrowser',
     'django.contrib.admin',
-...
+
 ```
 
 In urls.py
