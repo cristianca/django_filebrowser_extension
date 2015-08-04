@@ -45,7 +45,7 @@ urlpatterns = patterns('',
 )
 ```
 
-Some screen shots:
+# Screenshots #
 
 ![File Browser Youtube Integration](https://raw.githubusercontent.com/tomaszroszko/django_filebrowser_extension/master/docs/youtube.png)
 ![File Browser Youtube Integration](https://raw.githubusercontent.com/tomaszroszko/django_filebrowser_extension/master/docs/youtube2.png)
