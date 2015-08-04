@@ -1,1 +1,1 @@
-__author__ = 'tomaszroszko'
+default_app_config = 'filebrowser_extensions.thinglink.apps.ThinglinkFilebrowserExtension'

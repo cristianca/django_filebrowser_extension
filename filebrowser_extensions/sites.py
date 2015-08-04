@@ -1,5 +1,6 @@
 from django.core.files.storage import DefaultStorage
 from filebrowser.sites import FileBrowserSite as BaseSite
+from .apps import FilebrowserExtension
 
 
 class FileBrowserSite(BaseSite):
@@ -10,7 +11,11 @@ class FileBrowserSite(BaseSite):
 
     EXTENSION_NAME = 'Files'
 
-    pass
+    def extensions(self):
+        """
+        return list of available extensions
+        """
+        return FilebrowserExtension.extensions()
 
 
 storage = DefaultStorage()

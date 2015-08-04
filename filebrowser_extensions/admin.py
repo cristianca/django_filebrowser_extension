@@ -4,6 +4,7 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 from filebrowser.settings import ADMIN_THUMBNAIL, VERSIONS
+from filebrowser_extensions.apps import FilebrowserExtension
 
 
 class FileBrowserAdmin(admin.ModelAdmin):
@@ -21,12 +22,20 @@ class FileBrowserAdmin(admin.ModelAdmin):
         Make sure we pass popup var to admin. We do it this way
         to be ok with a way of how filebrowser put popup var from get
         """
+
+        if extra_context is None:
+            extra_context = {}
+
         pop = request.GET.get(IS_POPUP_VAR, None)
         self._pop = pop
         if pop:
-            if extra_context is None:
-                extra_context = {}
             extra_context.update({'query': {'pop': self._pop}})
+
+        extra_context.update(
+            {'filebrowser_site':
+                 {'extensions': FilebrowserExtension.extensions()}}
+        )
+
         return super(FileBrowserAdmin, self).changelist_view(
             request, extra_context)
 
