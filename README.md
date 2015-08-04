@@ -10,4 +10,4 @@ use filebrowser not only for files but also for medias from 3'rd part services l
 
 Some screen shots:
 
-![File Browser Youtube Integration](https://github.com/tomaszroszko/django_filebrowser_extension/docs/youtube.png)
+![File Browser Youtube Integration](https://raw.githubusercontent.com/tomaszroszko/django_filebrowser_extension/master/docs/youtube.png)
