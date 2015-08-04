@@ -7,3 +7,7 @@ use filebrowser not only for files but also for medias from 3'rd part services l
 * [thinglink](https://www.thinglink.com/ "thinglink")
 * More to come
 
+
+Some screen shots:
+
+![File Browser Youtube Integration](https://github.com/tomaszroszko/django_filebrowser_extension/docs/youtube.png)
