@@ -13,10 +13,27 @@ class Youtube(IFrameAbstract):
         verbose_name_plural = _('Youtubes')
 
     @property
+    def youtube_backend(self):
+        """
+        :return: youtube backend class from embed_video (very very nice lib)
+        """
+        if not hasattr(self, '_youtube_backend'):
+            self._youtube_backend = YoutubeBackend(self.code)
+        return self._youtube_backend
+
+    @property
     def iframe_link(self):
         """
         transform youtube link to youtube embed link
         :return: youtube embed link
         """
-        backend = YoutubeBackend(self.code)
-        return backend.url
+        return self.youtube_backend.url
+
+    @property
+    def thumbnail(self):
+        """
+        return youtube thumbnail
+        """
+        return self.youtube_backend.thumbnail
+
+
