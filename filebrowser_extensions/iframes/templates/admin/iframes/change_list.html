@@ -1,0 +1,6 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools-items %}
+    {% include "filebrowser/include_exstensions.html" %}
+    {{ block.super }}
+{% endblock %}

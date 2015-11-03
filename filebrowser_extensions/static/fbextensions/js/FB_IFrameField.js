@@ -13,15 +13,23 @@ function FileSubmit(ContentType, ObjectID, Link, Width, Height) {
     var object_identification = ContentType + ':' + ObjectID;
     input.value = object_identification;
 
-    // selected file is an image and thumbnail is available:
-    // display the preview-image (thumbnail)
-    // link the preview-image to the original image
+    // display iframe, with youtube it might happend we only deliver
+    // link + width + height and all other values
+    // however for all other normal iframes we deliver entire iframe so we don't need to construct anything like that
 
-    var iframe_code = '<iframe width="{{ Width }}" height="{{ Height }}" src="{{ link }}" type="text/html" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen scrolling="no"></iframe>'
-    iframe_code = iframe_code.replace('{{ link }}', Link)
-    iframe_code = iframe_code.replace('{{ Width }}', Width)
-    iframe_code = iframe_code.replace('{{ Height }}', Height)
-    previewiframe.innerHTML = iframe_code;
+    if (Link.indexOf("<iframe") == 0) {
+        var iframe_code = Link;
+        previewiframe.innerHTML = iframe_code;
+        previewiframe.getElementsByTagName('iframe')[0].setAttribute('width', Width);
+        previewiframe.getElementsByTagName('iframe')[0].setAttribute('height', Height);
+    } else {
+        var iframe_code = '<iframe width="{{ Width }}" height="{{ Height }}" src="{{ link }}" type="text/html" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen scrolling="no"></iframe>';
+        iframe_code = iframe_code.replace('{{ link }}', Link);
+        iframe_code = iframe_code.replace('{{ Width }}', Width);
+        iframe_code = iframe_code.replace('{{ Height }}', Height);
+        previewiframe.innerHTML = iframe_code;
+    }
+
     preview.setAttribute("style", "display:none");
     previewiframe.setAttribute("style", "display:block");
 

@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='django_filebrowser_extension',
-    version='0.0.1',
+    version='0.0.2',
     author='Tomasz Roszko',
     author_email='tomaszroszko@tjsoftware.co',
     description='Extension for django-filebrowser',

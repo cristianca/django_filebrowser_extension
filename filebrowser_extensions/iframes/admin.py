@@ -1,5 +1,9 @@
+from django.contrib import admin
+
 from filebrowser_extensions.admin import FileBrowserAdmin
 from filebrowser.settings import ADMIN_THUMBNAIL, VERSIONS
+from .models import IFrame as IFrameModel
+from .forms import IFrameAdminForm
 
 
 class IFrameAdmin(FileBrowserAdmin):
@@ -16,3 +20,11 @@ class IFrameAdmin(FileBrowserAdmin):
             VERSIONS[ADMIN_THUMBNAIL]['width'],
             VERSIONS[ADMIN_THUMBNAIL]['height']
         )
+
+
+class IFrame(IFrameAdmin):
+
+    form = IFrameAdminForm
+
+
+admin.site.register(IFrameModel, IFrame)

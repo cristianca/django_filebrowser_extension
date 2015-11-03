@@ -16,7 +16,7 @@ class YoutubeAdminForm(forms.ModelForm):
 
     class Meta:
         model = Youtube
-        fields = ('name', 'code')
+        fields = ('name', 'code', 'thumbnail')
 
 
 class YoutubeForm(forms.Form):
