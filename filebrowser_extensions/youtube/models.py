@@ -24,7 +24,7 @@ class Youtube(IFrameAbstract):
         :return: path to to youtube thumbnail
         """
 
-        file_name = self.youtube_thumbnail.split('/')[-1]
+        file_name = '_'.join(self.youtube_thumbnail.split('/')[-2:])
         path = os.path.join(MEDIA_ROOT, DIRECTORY, YOUTUBE_THUMBNAIL_DIRECTORY, file_name)
 
         r = requests.get(self.youtube_thumbnail, stream=True)
