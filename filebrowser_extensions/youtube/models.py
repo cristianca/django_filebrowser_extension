@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from embed_video.backends import YoutubeBackend
 import requests
 from filebrowser_extensions.iframes.models import IFrameAbstract
-from filebrowser.settings import DIRECTORY, MEDIA_ROOT, MEDIA_URL
+from filebrowser.settings import DIRECTORY, MEDIA_ROOT
 
 
 YOUTUBE_THUMBNAIL_DIRECTORY = 'youtube_thumbnails'
