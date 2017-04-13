@@ -32,7 +32,7 @@ class IFrameAbstract(models.Model):
     code = models.CharField(
         _('Code'), max_length=1000,
         help_text=_('Copy paste link to iframe here'),
-        unique=True
+        unique=False
     )
 
     class Meta:
