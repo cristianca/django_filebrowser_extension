@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations, models
+import filebrowser.fields
 
 
 class Migration(migrations.Migration):
@@ -13,11 +14,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ThingLink',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('create_at', models.DateTimeField(auto_now_add=True)),
                 ('modify_at', models.DateTimeField(auto_now=True)),
                 ('name', models.CharField(verbose_name='Name', max_length=255)),
-                ('code', models.CharField(verbose_name='Code', max_length=1000, help_text='Copy paste code from thinglink and paste here')),
+                ('thumbnail', filebrowser.fields.FileBrowseField(help_text='Upload thumbnail of your video / iframe / sliedshow', verbose_name='Thumbnail', null=True, max_length=255, blank=True)),
+                ('code', models.TextField(help_text='Copy paste link to iframe here', verbose_name='Code', max_length=1000)),
             ],
             options={
                 'verbose_name': 'ThingLink',
