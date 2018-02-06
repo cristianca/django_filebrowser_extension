@@ -58,7 +58,7 @@ class Youtube(IFrameAbstract):
         transform youtube link to youtube embed link
         :return: youtube embed link
         """
-        return self.youtube_backend.url
+        return self.youtube_backend.url.replace('http:', '')
 
     @property
     def youtube_thumbnail(self):
